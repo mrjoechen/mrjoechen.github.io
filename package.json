@@ -1,8 +1,8 @@
 {
-    "name": "hux-blog",
-    "title": "Hux Blog",
+    "name": "joe-blog",
+    "title": "Joe's Blog",
     "version": "1.0.0",
-    "homepage": "http://huxpro.github.io",
+    "homepage": "http://mrjoechen.github.io",
     "author": "Hux",
     "devDependencies": {
         "grunt": "~0.4.5",
@@ -13,7 +13,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/Huxpro/huxpro.github.io"
+        "url": "https://github.com/mrjoechen/mrjoechen.github.io"
     },
     "scripts": {
         "preview": "cd _site; python -m SimpleHTTPServer 8020",
