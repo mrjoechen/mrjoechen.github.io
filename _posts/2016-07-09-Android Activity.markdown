@@ -617,7 +617,7 @@ onResume-->onPause
 
 #### Activity生命周期图
 
-![img](./09451766.png)
+![img](/img/in-post/2016-07-09-Android Activity/09451766.png)
 
 
 demo：
@@ -634,7 +634,7 @@ onCreate()——>onStart()——>onResume()
 ——>第二个Activity onStop()——>onDestroy()
 
 如果给第二个activity设置透明窗口主题（`android:theme="@style/Base.Theme.AppCompat.Dialog"`）
-![img](./1467906201718.png)
+![img](/img/in-post/2016-07-09-Android Activity/1467906201718.png)
 从第一个activity跳转到第二个activity过程：
 AActivity: onCreate---onStart--onResume--onPause(A依然可见但不可交互)
 BActivity: onCreate--onStart--onResume（B以窗口对话框形式在AActivity上面，可见可交互）
