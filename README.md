@@ -1,9 +1,8 @@
-# HuxBlog Boilerplate
+# Joe's Blog Repository
 
-##### This is the boilerplate of [Hux Blog](https://github.com/Huxpro/huxpro.github.io), all documents is over there!
+##### This is the Blog of [Hux Blog](https://github.com/mrjoechen/mrjoechen.github.io), all documents is over there!
 
-#### [View Boilerplate &rarr;](http://huangxuan.me/huxblog-boilerplate/)
 
-#### [View Live Hux Blog &rarr;](http://huangxuan.me)
+#### [View Live Joe Blog &rarr;](http://jctech.cc)
 
-## If you like Hux Blog, Please star [huxpro.github.io repo](https://github.com/Huxpro/huxpro.github.io) instead of this! Thank you!
+## If you like Joe Blog, Please star [mrjoechen.github.io repo](https://github.com/mrjoechen/mrjoechen.github.io) instead of this! Thank you!
