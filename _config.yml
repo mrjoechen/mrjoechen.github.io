@@ -1,6 +1,6 @@
 # Site settings
 title: Joe's Blog
-SEOTitle: 陳先森的博客 | Joe's Blog
+SEOTitle: 陳乔陳先森 | Joe's Blog
 header-img: img/girl.jpg
 email: mrjctech@gmail.com
 description: ""
@@ -69,7 +69,7 @@ ga_domain: jctech.cc
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
-sidebar-about-description: "Android Developer & Designer 写写代码，玩玩产品。看看风景，谈谈生活。"
+sidebar-about-description: "Android Developer & Designer 写写代码，玩玩产品。看看风景，谈谈人生。"
 sidebar-avatar: /img/avatar-joe.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
 
 
