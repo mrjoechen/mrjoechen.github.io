@@ -2,7 +2,7 @@
 layout:     post
 title:      "Android Activity 学习笔记"
 subtitle:   " \"Android Activity\""
-date:       2016-07-09 12:00:00
+date:       2015-07-09 12:00:00
 author:     "Joe"
 header-img: "img/post-bg-2015.jpg"
 tags:

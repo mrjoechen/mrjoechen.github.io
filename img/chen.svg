@@ -1,0 +1,15 @@
+<svg width="580" height="400" xmlns="http://www.w3.org/2000/svg">
+ <!-- Created with Method Draw - http://github.com/duopixel/Method-Draw/ -->
+ <g>
+  <title>background</title>
+  <rect fill="#fff" id="canvas_background" height="402" width="582" y="-1" x="-1"/>
+  <g display="none" overflow="visible" y="0" x="0" height="100%" width="100%" id="canvasGrid">
+   <rect fill="url(#gridpattern)" stroke-width="0" y="0" x="0" height="100%" width="100%"/>
+  </g>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <path id="svg_6" d="m148.000015,185.439774l60.859604,-122.000015l162.285095,0l60.855286,122.000015l-60.855286,121.999985l-162.285095,0l-60.859604,-121.999985z" stroke-width="1.5" stroke="#ffffff" fill="#0183cd"/>
+  <text stroke="#ffffff" transform="matrix(2.136133860569374,0,0,2.4622796907829225,-279.99901711284383,-157.87083800032468) " xml:space="preserve" text-anchor="start" font-family="'League Gothic', sans-serif" font-size="80" id="svg_9" y="168.530242" x="226.372659" fill="#ffffff">陳</text>
+ </g>
+</svg>
