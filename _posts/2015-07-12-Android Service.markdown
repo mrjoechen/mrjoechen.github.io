@@ -15,7 +15,7 @@ tags:
 ---
 
 
-##Android Service
+## Android Service
 
 
 
@@ -27,12 +27,13 @@ Android系统有一套 内存回收机制. 会根据优先级进行回收.
 Android系统会尽可能的维持程序的进程, 但是终究还是需要回收一些旧的进程节省内存提供给新的或者重要的进程使用.
 
 进程优先级(由高到低):
+
 1. Foreground process 前台进程 用户正在操作的应用程序的进程，用户正在交互。
 * 这样的进程拥有一个在屏幕上显示并和用户交互的 activity 或者它的一个IntentReciver 正在运行。仅当内存实在无法供给它们维持同时运行时才会被杀死。一般来说，在这种情况下，设备依然处于使用虚拟内存的状态，必须要杀死一些前台进程以用户界面保持响应。
 2. Visible process    可视进程  没有前台组件，用户可以看到, 但无法进行操作的应用程序的进程.
 * 当满足如下任一条件时，进程被认为是可视的：
-● 它包含着一个不在前台，但仍然为用户可见的activity（它的onPause()方法被调用）。这种情况可能出现在以下情况：比如说，前台activity是一个对话框，而之前的Activity位于其下并可以看到。
-● 它包含了一个绑定至一个可视的activity的服务。
+ *  它包含着一个不在前台，但仍然为用户可见的activity（它的onPause()方法被调用）。这种情况可能出现在以下情况：比如说，前台activity是一个对话框，而之前的Activity位于其下并可以看到。
+ *  它包含了一个绑定至一个可视的activity的服务。
  可视进程依然被视为是很重要的，非到不杀死它们便无法维持前台进程运行时，才会被杀死。
 3. Service process    服务进程  后台运行的服务所在的进程.（如果有Activity再前台，则该进程属于前台进程）。
 * 服务进程是由startService() 方法启动的服务，它不会变成上述两类。尽管服务进程不会直接为用户所见，但它们一般都在做着用户所关心的事情（比如在后台播放mp3或者从网上下载东西）。所以系统会尽量维持它们的运行，除非系统内存不足以维持前台进程和可视进程的运行需要。
@@ -48,14 +49,14 @@ Android系统会尽可能的维持程序的进程, 但是终究还是需要回�
 
 注2：Thread和Service的区别：
 
-1）Thread 是程序执行的最小单元，它是分配CPU的基本单位，可以用 Thread 来执行一些异步的操作。
+- 1）Thread 是程序执行的最小单元，它是分配CPU的基本单位，可以用 Thread 来执行一些异步的操作。
 如果是Local Service，那么对应的 Service 是运行在主进程的 main 线程上的。如果是Remote Service，那么对应的 Service 则是运行在独立进程的main 线程上。因此 Service不是线程！
- 2）Thread 的运行是独立于 Activity 的，也就是说当一个 Activity 被 finish 之后，如果你没有主动停止Thread 或者Thread 里的 run 方法没有执行完毕的话，Thread 也会一直执行。因此这里会出现一个问题：当 Activity 被 finish 之后，你不再持有该 Thread 的引用。另一方面，你没有办法在不同的 Activity 中对同一 Thread 进行控制。
+- 2）Thread 的运行是独立于 Activity 的，也就是说当一个 Activity 被 finish 之后，如果你没有主动停止Thread 或者Thread 里的 run 方法没有执行完毕的话，Thread 也会一直执行。因此这里会出现一个问题：当 Activity 被 finish 之后，你不再持有该 Thread 的引用。另一方面，你没有办法在不同的 Activity 中对同一 Thread 进行控制。
 而任何 Activity 都可以控制同一 Service，而系统也只会创建一个对应 Service 的实例。因此你可以把 Service 想象成一种消息服务，而你可以在任何有 Context 的地方调用 Context.startService、Context.stopService、Context.bindService，Context.unbindService，来控制它，你也可以在 Service 里注册 BroadcastReceiver，在其他地方通过发送 broadcast 来控制它，当然这些都是 Thread 做不到的。
-3) Service组件主要有两个目的：后台运行和跨进程访问。service可以在android系统后台独立运行，线程是不可以。
-4) Service类是可以供其他应用程序来调用这个Service的而Thread只是在本类中在使用，如果本类关闭 那么这个thread也就下岗了而Service类则不会.
+- 3) Service组件主要有两个目的：后台运行和跨进程访问。service可以在android系统后台独立运行，线程是不可以。
+- 4) Service类是可以供其他应用程序来调用这个Service的而Thread只是在本类中在使用，如果本类关闭 那么这个thread也就下岗了而Service类则不会.
 
-####服务两种启动方式
+#### 服务两种启动方式
 
 * startService
     * 第一次启动执行onCreate和onStartCommand（onStart已过时）方法，重复的调用startService会导致onStartCommand被重复调用
@@ -128,13 +129,13 @@ Service启动后，就会一直运行于后台，直到调用`Context.stopServic
 			}
 ```
 
-#####两种启动方法混合使用
+##### 两种启动方法混合使用
 
 * 用服务实现音乐播放时，因为音乐播放必须运行在服务进程中，可是音乐服务中的方法，需要被前台Activity所调用，所以需要混合启动音乐服务
 * 先start，再bind，销毁时先unbind，在stop
 
 
-######如何保证Service杀不死？
+###### 如何保证Service杀不死？
 
 充分利用onStartCommand()方法的返回值；
 在Service的onDestory中重启该Service；
@@ -142,7 +143,7 @@ Service启动后，就会一直运行于后台，直到调用`Context.stopServic
 
 -------------
 
-#####电话窃听器
+##### 电话窃听器
 
 * 电话状态：空闲、响铃、接听
 * 获取电话管理器，设置侦听
@@ -200,20 +201,20 @@ Service启动后，就会一直运行于后台，直到调用`Context.stopServic
 
 -----------------
 
-####Service 生命周期
+#### Service 生命周期
 
-![img](/img/in-post/2015-07-05-Android Service/2015-07-05-Android Service-2.png)
+![img](/img/in-post/2015-07-12-Android Service/2015-07-12-Android Service-2.png)
 
-![img](/img/in-post/2015-07-05-Android Service/2015-07-05-Android Service-1.png)
+![img](/img/in-post/2015-07-12-Android Service/2015-07-12-Android Service-1.png)
 
 
 
-#####调用服务的分类
+##### 调用服务的分类
 
 * 本地服务：指的是启动服务的activity和服务在同一个进程中
 * 远程服务：指的是启动服务的activity和服务不在同一个进程中
 
-####通过bindService方法调用服务里的方法
+#### 通过bindService方法调用服务里的方法
 
 
 ```
@@ -286,7 +287,7 @@ Service启动后，就会一直运行于后台，直到调用`Context.stopServic
 
 ----------
 
-###跨应用启动服务
+### 跨应用启动服务
 
 * android 5.0 之后只能显式意图启动服务，不能用隐式Intent
 
@@ -306,7 +307,7 @@ Service启动后，就会一直运行于后台，直到调用`Context.stopServic
 
 
 
-####IntentService
+#### IntentService
 
 IntentService是Service用来处理异步请求的一个子类，在Service里的操作默认是运行在主线程中的，而IntentService会重新生成一个工作线程，来处理需要Service处理的操作，这个操作并不会影响UI主线程正常工作。需要的时候，通过startService(intent)来启动一个IntentService，当IntentService的工作线程里的所有Intent都被处理完后，这个IntentService会自动停止运行。
 
