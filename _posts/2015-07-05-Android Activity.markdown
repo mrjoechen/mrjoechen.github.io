@@ -1,8 +1,8 @@
 ---
 layout:     post
-title:      "Android Activity 学习笔记"
-subtitle:   " \"Android Activity\""
-date:       2015-07-09 12:00:00
+title:      "Android Activity "
+subtitle:   " \"Android Activity 你所需要知道的一切\""
+date:       2015-07-05 12:00:00
 author:     "Joe"
 header-img: "img/post-bg-2015.jpg"
 tags:
@@ -11,20 +11,24 @@ tags:
     - 四大组件
     - 生命周期
     - 数据传递
+
+
 ---
 
 ## Android Activity
 
 
 ### Android四大组件
+
 * Activity
 * BroadCastReceiver
 * Service
 * ContentProvider
-注：* Android四大组件都要在清单文件中注册，（BroadCastReceiver例外可以动态
+注：* Android四大组件都要在清单文件中注册（BroadCastReceiver例外可以动态
 注册）
 
 #### Activity
+
 一个Activity是一个应用程序组件，提供一个屏幕，用户可以用来交互为了完成某项任务，例如拨号、拍照、发送email、看地图。每一个activity被给予一个窗口，在上面可以绘制用户交互的画面。窗口通常充满屏幕，但也可以小于屏幕而浮于其它窗口之上。一个用户交互界面对应一个activity,相当于是界面的容器`setContentView() `,// 要显示的布局activity 是Context的子类,同时实现了window.callback接口(里面方法如dispatchtouchevent可以分发事件)和keyevent.callback等, 可以处理与窗体用户交互的事件（为什么能交互）.
  ps.  Service也是context子类，是activity他大爷，没有实现一些可以交互的接口方法，所以不能和用户交互。
 
@@ -38,7 +42,7 @@ public class Activity extends ContextThemeWrapper
 
 #### 创建activity
 
-* 需要在清单文件中为其配置一个activity标签,声明你的activity在manifest文件为了它可以被系统访问。否则如果系统找不到，在显示时会直接报错ActivityNotFoundException。要声明你的activity，打开manifest文件，添加一个
+* 需要在清单文件中为其配置一个activity标签，声明你的activity在manifest文件为了它可以被系统访问。否则如果系统找不到，在显示时会直接报错ActivityNotFoundException。要声明你的activity，打开manifest文件，添加一个
 * activity元素作为application元素的子元素。
 * Activity 在调用的时候实例化，如果manifest没有声明这个activity，但不使用不会报
 错。
@@ -81,6 +85,7 @@ android:label="@string/app_name"
 
 
 ##### 显式意图
+
 * 跳转至同一项目下的另一个Activity，直接指定该Activity的字节码即可
 
 
@@ -102,6 +107,7 @@ startActivity(intent);
 
 
 ##### 隐式意图
+
 * 隐式意图跳转至指定Activity
 
 
@@ -167,7 +173,10 @@ startActivity(intent);
 
 
 #### 意图匹配原则：
+
 * `action行为检测`
+
+
 > manifest文件中activity的一个intentfilter元素以子元素的形式列出了行为。例如：
 
 
@@ -183,6 +192,8 @@ startActivity(intent);
 > 如同示例所展示的，一个Intent对象只命名一个单独的行为，而一个过滤器可以列出多个行为。列表不能为空；一个过滤器至少要包含一个元素，否则它将屏蔽所有的意图。要通过这个检测，在Intent对象中指定的行为必须与过滤器所列出的行为之一相匹配。如果该对象或是过滤器没有指定一个行为，就会有下面的结果：如果过滤器没有列出任何行为，就没有行为可以与意图相匹配，所有的意图都无法通过检测。没有意图可以通过过滤器。另一方面，如果Intent对象没有指定任何的行为，它将自动通过检测——只要过滤器含有一个或以上的行为。
 
 * `category类别检测`
+
+
 >intent-filter也会将类别作为子元素列出。例如：
 
 
@@ -200,6 +211,8 @@ startActivity(intent);
 
 
 * `data数据检测`
+
+
 >如同行为和类别，意图过滤器的的数据类型也是作为子元素保存的。而且和它们一样，这些子元素可以出现多次或完全不出现。
 
 
@@ -344,36 +357,39 @@ tv.setText(b.getString("name") + "  " + b.getString("age"));
 ### 3.传递值对象 
 >所谓的值对象，就是我们通常在项目中自定义的，有数据类型的。 
 那我们就先自定义一个数据类型
-```
-public class UserBean implements Serializable{
 
-    private String name;
-    private String age;
-
-    public UserBean(String name, String age) {
-        this.name = name;
-        this.age = age;
-    }
-
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setAge(String age) {
-        this.age = age;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getAge() {
-        return age;
-    }
-}
 
 ```
+		public class UserBean implements Serializable{
+		
+		    private String name;
+		    private String age;
+		
+		    public UserBean(String name, String age) {
+		        this.name = name;
+		        this.age = age;
+		    }
+		
+		
+		    public void setName(String name) {
+		        this.name = name;
+		    }
+		
+		    public void setAge(String age) {
+		        this.age = age;
+		    }
+		
+		    public String getName() {
+		        return name;
+		    }
+		
+		    public String getAge() {
+		        return age;
+		    }
+		}
+
+```
+
 >在这里我们定义了两个都是String类型的参数，并且实现了Serializable接口。使我们的自定义数据类型进行数据序列化
 
 * 在MainActivity中
@@ -384,6 +400,7 @@ Intent intent = new Intent(MainActivity.this,OtherActivity.class);
 intent.putExtra("UserBean",new UserBean("MirGao","24"));
 startActivity(intent);
 ```
+
 直接进行自定义对象的传递，并赋予两个参数
 
 * OtherActivity
@@ -552,6 +569,11 @@ public class OtherActivity extends Activity {
 
 # Activity生命周期
 
+
+#### Activity生命周期图
+
+![img](/img/in-post/2015-07-05-Android Activity/2015-07-05-Android Activity-1.png)
+
 ### void onCreate()
 * Activity已经被创建完毕
 * 当活动第一次启动的时候，触发该方法，可以在此时完
@@ -615,9 +637,7 @@ onStart-->onResume-->onPause-->onStop
 ##### 前台生命周期（foreground lifetime）
 onResume-->onPause
 
-#### Activity生命周期图
 
-![img](/img/in-post/2016-07-09-Android Activity/09451766.png)
 
 
 demo：
@@ -634,7 +654,7 @@ onCreate()——>onStart()——>onResume()
 ——>第二个Activity onStop()——>onDestroy()
 
 如果给第二个activity设置透明窗口主题（`android:theme="@style/Base.Theme.AppCompat.Dialog"`）
-![img](/img/in-post/2016-07-09-Android Activity/1467906201718.png)
+![img](/img/in-post/2015-07-05-Android Activity/2015-07-05-Android Activity-2.png)
 从第一个activity跳转到第二个activity过程：
 AActivity: onCreate---onStart--onResume--onPause(A依然可见但不可交互)
 BActivity: onCreate--onStart--onResume（B以窗口对话框形式在AActivity上面，可见可交互）
@@ -645,7 +665,106 @@ AActivity： onResume
 BActivity:    onStop--onDestory
 
 
----
+
+----
+
+
+###Activity数据保存
+
+>当Activity由于系统配置等发生改变，会导致Activity被杀死而重新创建。即会调用onDestroy销毁Activity,再重新onCreate开启新Activity，系统通过调用onSaveInstanceState和onRestoreInstanceState分别保存和恢复视图(View)状态。
+
+```
+protected void onCreate(Bundle savedInstanceState) {
+super.onCreate(savedInstanceState);
+setContentView(R.layout.activity_main);
+
+//这里，当Acivity第一次被创建的时候为空
+//所以我们需要判断一下
+if( savedInstanceState != null ){
+savedInstanceState.getString("anAnt");
+}
+}
+
+@Override
+protected void onSaveInstanceState(Bundle outState) {
+super.onSaveInstanceState(outState);
+
+outState.putString("anAnt","Android");
+
+}
+
+```
+
+- onSaveInstanceState
+
+onSaveInstanceState在onStop之前调用，但不一定在onPause之前或者之后。onRestoreInstanceState在onStart之后调用
+
+需要注意的是，onSaveInstanceState方法只会在Activity被异常终止，在Activity即将被销毁且有机会重新显示的情况下才会调用
+
+可以总结有下面几种情况：
+
+```
+
+1、当用户按下HOME键时。
+
+这是显而易见的，系统不知道你按下HOME后要运行多少其他的程序，自然也不知道activity A是否会被销毁，故系统会调用onSaveInstanceState，让用户有机会保存某些非永久性的数据。以下几种情况的分析都遵循该原则
+
+2、长按HOME键，选择运行其他的程序时。
+
+3、按下电源按键（关闭屏幕显示）时。
+
+4、从activity A中启动一个新的activity时。
+
+5、屏幕方向切换时，例如从竖屏切换到横屏时。（如果不指定configchange属性） 在屏幕切换之前，系统会销毁activity A，在屏幕切换之后系统又会自动地创建activity A，所以onSaveInstanceState一定会被执行
+
+```
+
+>总而言之，onSaveInstanceState的调用遵循一个重要原则，即当系统“未经你许可”时销毁了你的activity，则onSaveInstanceState会被系统调用，这是系统的责任，因为它必须要提供一个机会让你保存你的数据（当然你不保存那就随便你了）。
+此外，由于默认的onSaveInstanceState()方法的实现帮助UI存储它的状态，所以如果你需要覆盖这个方法去存储额外的状态信息时，你应该在执行任何代码之前都调用父类的onSaveInstanceState()方法（super.onSaveInstanceState()）。 既然有现成的可用，那么我们到底还要不要自己实现onSaveInstanceState()?这得看情况了，如果你自己的派生类中有变量影响到UI，或你程序的行为，当然就要把这个变量也保存了，那么就需要自己实现，否则就不需要。
+
+- onRestoreInstanceState
+
+onRestoreInstanceState方法在activity确定被销毁以后，重建activity时调用，注意是确定activity被销毁，例如，当正在显示activity A的时候，用户按下HOME键回到主界面，然后用户紧接着又返回到activity A，这种情况下activity A一般不会因为内存的原因被系统销毁，故activity A的onRestoreInstanceState方法不会被执行。
+
+另外，onRestoreInstanceState的bundle参数也会传递到onCreate方法中，你也可以选择在onCreate方法中做数据还原。 还有onRestoreInstanceState在onstart之后执行。 至于这两个函数的使用，给出示范代码（留意自定义代码在调用super的前或后）：
+
+```
+@Override
+public void onSaveInstanceState(Bundle savedInstanceState) {
+savedInstanceState.putBoolean("MyBoolean", true);
+savedInstanceState.putDouble("myDouble", 1.9);
+savedInstanceState.putInt("MyInt", 1);
+savedInstanceState.putString("MyString", "Welcome back to Android");
+// etc.
+super.onSaveInstanceState(savedInstanceState);
+}
+
+@Override
+public void onRestoreInstanceState(Bundle savedInstanceState) {
+super.onRestoreInstanceState(savedInstanceState);
+
+boolean myBoolean = savedInstanceState.getBoolean("MyBoolean");
+double myDouble = savedInstanceState.getDouble("myDouble");
+int myInt = savedInstanceState.getInt("MyInt");
+String myString = savedInstanceState.getString("MyString");
+}
+
+```
+
+- 由于内存不足导致的Activity被杀死
+
+当activity由于内存不足，被系统杀死后会调用onSaveInstanceState和onRestoreInstanceState保存和恢复视图。按照优先级从高到低，将activity分为以下三种：
+
+前台Activity
+可见但非后台Activity
+后台Activity
+
+当系统内存不足，系统会按照上述优先级杀死目标Activity所在进程。
+
+
+-----
+
+
 
 
 ### Activity的四种启动模式
