@@ -20,7 +20,7 @@ tags:
 
 #####先上效果图：
 
-[img](/img/in-post/2016-08-11-Android TabLayout/2016-08-11-Android-TabLayout.gif)
+![img](/img/in-post/2016-08-11-Android TabLayout/2016-08-11-Android-TabLayout.gif)
 
 
 * 官方文档：
