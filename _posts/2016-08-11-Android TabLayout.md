@@ -4,7 +4,7 @@ title:      "Android TabLayout "
 subtitle:   " \"Android Tab滑动布局\""
 date:       2016-08-11 12:00:00
 author:     "Joe"
-header-img: "img/post-2016-high.jpg"
+header-img: "img/post-2016-sunsetglow.jpg"
 tags:
     - Android学习笔记
     - Android TabLayout
@@ -20,7 +20,7 @@ tags:
 
 #####先上效果图：
 
-![Alt text](./GIF.gif)![img](/img/in-post/2016-08-11-Android TabLayout/2016-08-11-Android-TabLayout.gif)
+[img](/img/in-post/2016-08-11-Android TabLayout/2016-08-11-Android-TabLayout.gif)
 
 
 * 官方文档：
