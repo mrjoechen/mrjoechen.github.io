@@ -11,14 +11,14 @@ tags:
 ---
 
 
-##Android TabLayout
+## Android TabLayout
 
 
 最近在项目中需要实现Tab标签切换的效果，选择使用的android中Meterial Design控件TabLayout。
 在App中Tab也是很常见的，它的实现方式也有很多：TabHost，自定义控件（第三方库）ViewPager与ViewPagerIndicator，RadioGroup等等。在2015年的google大会上，google发布了基于Meterial Design的Android Support Design库，里面包含了许多新的控件，其中有一个TabLayout，它就可以完成TabPageIndicator的效果，使用起来也比较方便。
 
 
-#####先上效果图：
+##### 先上效果图：
 
 ![img](/img/in-post/2016-08-11-Android TabLayout/2016-08-11-Android-TabLayout.gif)
 
@@ -36,7 +36,7 @@ tags:
 
 * 你应该通过setOnTabSelectedListener（OnTabSelectedListener）设置一个监听器，当任何标签的选择状态更改时可以被通知。如果你在一起使用ViewPager用此布局，您可以使用setTabsFromPagerAdapter（PagerAdapter），使用给定的PagerAdapter的将页面标题填入的选项卡。你也应该使用TabLayout.TabLayoutOnPageChangeListener到滚动和选择更改转发到这个布局。
 
-###简单使用：
+### 简单使用：
 
 * 首先，在build.gradle中加入依赖`compile 'com.android.support:design:24.4.1'`
 * 创建布局文件，添加TabLayout和Viewpager作为上下的布局
@@ -194,56 +194,41 @@ PS：TabLayout也可以根据需要自己定制样式
 
 1. 改变选中字体的颜色
 
-
 ```
 app:tabSelectedTextColor="@android:color/holo_orange_light"
 ```
-
 2. 改变未选中字体的颜色
-
 
 ```
 app:tabTextColor="@color/colorPrimary"
 ```
-
 3. 改变指示器下标的颜色
-
 
 ```
 app:tabIndicatorColor="@android:color/holo_orange_light"
 ```
-
 4. 改变整个TabLayout的颜色
-
 
 ```
 app:tabBackground="color"
 ```
-
 5. 改变TabLayout内部字体大小
-
 
 ```
 app:tabTextAppearance="@android:style/TextAppearance.Holo.Large"//设置文字样式
 ```
-
 6. 改变指示器下标的高度
-
 
 ```
 app:tabIndicatorHeight="4dp"
 ```
-
 7. 添加图标
-
 
 ```
 tabLayout.addTab(tabLayout.newTab().setText("Tab 1").setIcon(R.mipmap.ic_launcher));
 ```
-
 8. TabLayout的监听事件
 给选中tab设置监听事件OnTabSelectedListener()：
-
 
 ```
 	tabLayout.setOnTabSelectedListener(newTabLayout.OnTabSelectedListener() {
