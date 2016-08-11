@@ -192,57 +192,59 @@ public class BoxBaseFragment extends Fragment {
 
 PS：TabLayout也可以根据需要自己定制样式
 
-1. 改变选中字体的颜色
+
+1.改变选中字体的颜色
 
 ```
-app:tabSelectedTextColor="@android:color/holo_orange_light"
+	app:tabSelectedTextColor="@android:color/holo_orange_light"
 ```
-2. 改变未选中字体的颜色
+2.改变未选中字体的颜色
 
 ```
-app:tabTextColor="@color/colorPrimary"
+		app:tabTextColor="@color/colorPrimary"
 ```
-3. 改变指示器下标的颜色
+3.改变指示器下标的颜色
 
 ```
-app:tabIndicatorColor="@android:color/holo_orange_light"
+		app:tabIndicatorColor="@android:color/holo_orange_light"
 ```
-4. 改变整个TabLayout的颜色
+4.改变整个TabLayout的颜色
 
 ```
-app:tabBackground="color"
+		app:tabBackground="color"
 ```
-5. 改变TabLayout内部字体大小
+5.改变TabLayout内部字体大小
 
 ```
-app:tabTextAppearance="@android:style/TextAppearance.Holo.Large"//设置文字样式
+		app:tabTextAppearance="@android:style/TextAppearance.Holo.Large"//设置文字样式
 ```
-6. 改变指示器下标的高度
+6.改变指示器下标的高度
 
 ```
-app:tabIndicatorHeight="4dp"
+		app:tabIndicatorHeight="4dp"
 ```
-7. 添加图标
+7.添加图标
 
 ```
-tabLayout.addTab(tabLayout.newTab().setText("Tab 1").setIcon(R.mipmap.ic_launcher));
+		tabLayout.addTab(tabLayout.newTab().setText("Tab 1").setIcon(R.mipmap.ic_launcher));
 ```
-8. TabLayout的监听事件
+8.TabLayout的监听事件
+
 给选中tab设置监听事件OnTabSelectedListener()：
 
 ```
-	tabLayout.setOnTabSelectedListener(newTabLayout.OnTabSelectedListener() {
-					@Override
-					public voidonTabSelected(TabLayout.Tab tab) {
-					//选中了tab的逻辑
+tabLayout.setOnTabSelectedListener(newTabLayout.OnTabSelectedListener() {
+				@Override
+				public voidonTabSelected(TabLayout.Tab tab) {
+				//选中了tab的逻辑
+				}
+				@Override
+				public voidonTabUnselected(TabLayout.Tab tab) {
+				//未选中tab的逻辑
+				}
+				@Override
+				public voidonTabReselected(TabLayout.Tab tab) {
+				//再次选中tab的逻辑
 					}
-					@Override
-					public voidonTabUnselected(TabLayout.Tab tab) {
-					//未选中tab的逻辑
-					}
-					@Override
-					public voidonTabReselected(TabLayout.Tab tab) {
-					//再次选中tab的逻辑
-						}
-			});
+		});
 ```
