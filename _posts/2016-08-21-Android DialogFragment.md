@@ -1,5 +1,3 @@
-##DialogFragment简单使用
-
 ---
 layout:     post
 title:      "Android DialogFragment "
@@ -12,6 +10,13 @@ tags:
     - DialogFragment
 
 ---
+
+
+
+
+##DialogFragment简单使用
+
+
 
 
 谷歌官方推荐使用DialogFragment来管理对话框，当旋转屏幕和按下后退键时可以更好的利用其生命周期管理dialog，它和Fragment有着基本一致的声明周期。
