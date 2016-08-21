@@ -2,8 +2,8 @@
 
 ---
 layout:     post
-title:      "Android Service "
-subtitle:   " \"Android DialogFragment\""
+title:      "Android DialogFragment "
+subtitle:   " \"Android DialogFragment简单使用\""
 date:       2015-08-21 12:00:00
 author:     "Joe"
 header-img: "img/post-2016-girl.jpg"
