@@ -1,22 +1,17 @@
 ---
 layout:     post
 title:      "Android DialogFragment "
-subtitle:   " \"Android DialogFragment简单使用\""
-date:       2015-08-21 12:00:00
+subtitle:   " \"Android DialogFragment简单用法\""
+date:       2016-08-20 12:00:00
 author:     "Joe"
-header-img: "img/post-2016-girl.jpg"
+header-img: "img/post-2016-sunsetglow.jpg"
 tags:
     - Android学习笔记
-    - DialogFragment
-
+    - Android TabLayout
 ---
 
 
-
-
-##DialogFragment简单使用
-
-
+## DialogFragment简单使用
 
 
 谷歌官方推荐使用DialogFragment来管理对话框，当旋转屏幕和按下后退键时可以更好的利用其生命周期管理dialog，它和Fragment有着基本一致的声明周期。
@@ -95,14 +90,14 @@ public class MyDialogFragment extends DialogFragment
 
 
 
-####开发过程中遇到的问题
+#### 开发过程中遇到的问题
 
 -------------------------------
 
 >关于dialog样式边框问题解决方法：
 DialogFragment去掉默认样式，实现窗口透明
 
-######方法一
+###### 方法一
 
 * 重写onCreateDialog方法时，设置dialog样式。
 
@@ -139,7 +134,7 @@ DialogFragment去掉默认样式，实现窗口透明
 
 ------------------------
 
-######方法二：
+###### 方法二：
 
 * 重写onCreateview方法时
 
