@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "Android Content Provider "
+title:      "Android AsyncTask "
 subtitle:   " \"带你了解Android中异步任务AsyncTask\""
 date:       2015-07-31 12:00:00
 author:     "Joe"
