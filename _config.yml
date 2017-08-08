@@ -99,3 +99,5 @@ friends: [
         href: "#"
     }
 ]
+
+theme: jekyll-theme-slate
