@@ -6,7 +6,7 @@
 ### [View Live Joe Blog &rarr;](http://jctech.cc)
 
 
-博文主要包含平日Android学习的一些笔记和新的，更多文章正在在学习和整理中...
+博文主要包含平日Android学习的一些笔记和心得，更多文章正在学习和整理中...
 
 
 
