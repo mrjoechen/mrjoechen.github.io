@@ -10,8 +10,6 @@ tags:
     - Android App
 ---
 
-------
-
 ## Showcase
 
 > Showcase is an Android application for displaying pictures. You can customize the source of pictures. Now it supports FTP, SFTP, SMB, and Webdav protocols. you can also configure the style of picture display.
