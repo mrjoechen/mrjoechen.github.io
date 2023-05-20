@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      "My new app Showcase "
-subtitle:   "Showcase app"
+subtitle:   "\"Showcase app\""
 date:       2023-04-01 12:00:00
 author:     "Joe"
 header-img: "img/post-2015-sea.jpg"
