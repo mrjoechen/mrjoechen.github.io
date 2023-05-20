@@ -8,7 +8,7 @@ header-img: "img/post-2015-sea.jpg"
 tags:
     - Independent Developer
     - Android App
-
+---
 
 ------
 
