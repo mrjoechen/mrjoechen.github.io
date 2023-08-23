@@ -84,7 +84,7 @@ featured-condition-size: 0              # A tag will be featured if the size of 
 friends: [
     {
         title: "Joe Blog",
-        href: "http://jctech.cc"
+        href: "https://mrjoechen.github.io"
     },{
         title: "Foo",
         href: "#"
@@ -101,3 +101,6 @@ friends: [
 ]
 
 theme: jekyll-theme-slate
+
+sitemap:
+  path: sitemap.xml
