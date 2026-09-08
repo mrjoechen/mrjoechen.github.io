@@ -1,0 +1,92 @@
+---
+import { comments } from "@/comments.config";
+---
+
+{
+  comments.categoryId && (
+    <section aria-label="Comments" class="my-10" data-pagefind-ignore>
+      <h2 id="comments" class="mb-6 text-2xl font-semibold">
+        Comments
+      </h2>
+      <blog-comments
+        data-repo={comments.repo}
+        data-repo-id={comments.repoId}
+        data-category={comments.category}
+        data-category-id={comments.categoryId}
+      >
+        <div class="giscus" />
+        <p class="text-muted-foreground mt-4 text-sm">
+          Sign in with GitHub to join the conversation. You can also visit{" "}
+          <a href={`https://github.com/${comments.repo}/discussions`}>
+            GitHub Discussions
+          </a>
+          .
+        </p>
+      </blog-comments>
+    </section>
+  )
+}
+
+<script>
+  class BlogComments extends HTMLElement {
+    private observer?: MutationObserver;
+
+    connectedCallback() {
+      const host = this.querySelector(".giscus");
+      if (!host || host.childElementCount) return;
+      const script = document.createElement("script");
+      script.src = "https://giscus.app/client.js";
+      script.async = true;
+      script.crossOrigin = "anonymous";
+      const attributes: Record<string, string> = {
+        repo: this.dataset.repo!,
+        "repo-id": this.dataset.repoId!,
+        category: this.dataset.category!,
+        "category-id": this.dataset.categoryId!,
+        mapping: "pathname",
+        strict: "1",
+        "reactions-enabled": "1",
+        "emit-metadata": "0",
+        "input-position": "top",
+        theme: this.theme,
+        lang: "en",
+        loading: "lazy",
+      };
+      for (const [key, value] of Object.entries(attributes)) {
+        script.setAttribute(`data-${key}`, value);
+      }
+      // Catch the iframe load, including a theme change while it was loading.
+      this.addEventListener("load", this.syncTheme, true);
+      this.observer = new MutationObserver(this.syncTheme);
+      this.observer.observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ["data-theme"],
+      });
+      host.append(script);
+    }
+
+    private get theme() {
+      return document.documentElement.dataset.theme === "dark"
+        ? "dark_dimmed"
+        : "light";
+    }
+
+    private syncTheme = () => {
+      this.querySelector<HTMLIFrameElement>(
+        "iframe.giscus-frame"
+      )?.contentWindow?.postMessage(
+        { giscus: { setConfig: { theme: this.theme } } },
+        "https://giscus.app"
+      );
+    };
+
+    disconnectedCallback() {
+      this.observer?.disconnect();
+      this.removeEventListener("load", this.syncTheme, true);
+    }
+  }
+
+  if (!customElements.get("blog-comments")) {
+    customElements.define("blog-comments", BlogComments);
+  }
+</script>
