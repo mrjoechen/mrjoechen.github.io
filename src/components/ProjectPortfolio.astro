@@ -1,0 +1,225 @@
+---
+import IconArrowRight from "@/assets/icons/IconArrowRight.svg";
+import IconGitHub from "@/assets/icons/socials/github.svg";
+import { getAssetPath } from "@/utils/withBase";
+
+type Project = {
+  name: string;
+  platform: string;
+  description: string;
+  descriptionZh: string;
+  image: string;
+  imageAlt: string;
+  website: string;
+  repository: string;
+};
+
+const projects: Project[] = [
+  {
+    name: "webdav-image-saver",
+    platform: "Chrome Extension",
+    description:
+      "Save individual images or an entire page selection straight to your own WebDAV storage. Multiple servers, flexible naming, and local credentials keep the workflow useful without adding another cloud service.",
+    descriptionZh:
+      "把单张网页图片或批量选择的图片直接保存到自己的 WebDAV 存储。支持多服务器、灵活命名和本地凭据，不必再经过额外的云端服务。",
+    image: "/img/projects/webdav-image-saver.png",
+    imageAlt: "WebDAV Image Saver browser extension interface",
+    website: "https://mrjoechen.github.io/webdav-image-saver/",
+    repository: "https://github.com/mrjoechen/webdav-image-saver",
+  },
+  {
+    name: "NewPicTab",
+    platform: "Chrome Extension",
+    description:
+      "A quiet new-tab page that puts personal images first. Choose local files, WebDAV, direct URLs, JSON APIs, or TMDB, then add only the clock, weather, search, and shortcuts you need.",
+    descriptionZh:
+      "一个让个人图片成为主角的极简新标签页。可选择本地文件、WebDAV、图片链接、JSON API 或 TMDB，并按需开启时钟、天气、搜索和快捷方式。",
+    image: "/img/projects/newpictab.jpg",
+    imageAlt: "NewPicTab showing a photo-focused browser new tab",
+    website: "https://mrjoechen.github.io/NewPicTab/",
+    repository: "https://github.com/mrjoechen/NewPicTab",
+  },
+  {
+    name: "ScreenDeck",
+    platform: "ESP32-S3",
+    description:
+      "Local-first firmware and a web controller for a swipeable 480 x 480 desktop display. Add images and text, manage playback from the local network, and keep content on the device.",
+    descriptionZh:
+      "为 480 x 480 桌面屏打造的本地优先固件与网页控制器。可添加图片和文字、在局域网管理播放，并让内容留在设备本地。",
+    image: "/img/projects/screendeck.jpg",
+    imageAlt: "ScreenDeck device displaying its on-device settings",
+    website: "https://mrjoechen.github.io/ScreenDeck/",
+    repository: "https://github.com/mrjoechen/ScreenDeck",
+  },
+];
+
+const showcase = {
+  name: "ShowcaseApp",
+  platform: "Android & Desktop",
+  description:
+    "A flexible display for the photos and artwork you already own. Showcase brings local folders, FTP, SFTP, SMB, WebDAV, and TMDB together in one calm, full-screen viewing experience.",
+  descriptionZh:
+    "一个用于展示已有照片与艺术作品的多平台应用。Showcase 将本地文件夹、FTP、SFTP、SMB、WebDAV 和 TMDB 汇集到安静、沉浸的全屏浏览体验中。",
+  website: "https://showcase.joechen.space/",
+  repository: "https://github.com/mrjoechen/ShowcaseApp",
+};
+---
+
+<div class="not-prose mt-12">
+  <section aria-labelledby="selected-work">
+    <div class="mb-6 flex items-end justify-between gap-4 border-b pb-3">
+      <div>
+        <p class="text-muted-foreground text-sm font-medium">Selected work</p>
+        <h2 id="selected-work" class="mt-1 text-2xl font-semibold">个人作品</h2>
+      </div>
+      <p class="text-muted-foreground hidden text-sm sm:block">2023–2026</p>
+    </div>
+
+    <article class="grid gap-6 border-b pb-10 md:grid-cols-[1.2fr_1fr]">
+      <a
+        class="group border-border bg-muted/30 block overflow-hidden rounded-lg border"
+        href={showcase.website}
+        target="_blank"
+        rel="noreferrer"
+        aria-label={`Visit ${showcase.name}`}
+      >
+        <img
+          class="aspect-[20/9] h-full w-full object-cover transition-transform duration-500 motion-safe:group-hover:scale-[1.02]"
+          src={getAssetPath("img/projects/showcase.jpg")}
+          width="2400"
+          height="1080"
+          alt="ShowcaseApp displaying an image library"
+        />
+      </a>
+
+      <div class="flex flex-col justify-center">
+        <p class="text-accent text-xs font-semibold tracking-widest uppercase">
+          {showcase.platform}
+        </p>
+        <h3 class="mt-2 text-2xl font-semibold">{showcase.name}</h3>
+        <p class="mt-4 leading-7">{showcase.description}</p>
+        <p class="text-muted-foreground mt-3 leading-7">
+          {showcase.descriptionZh}
+        </p>
+        <div class="mt-6 flex flex-wrap gap-x-5 gap-y-3 text-sm font-semibold">
+          <a
+            class="hover:text-accent inline-flex items-center gap-1.5 underline decoration-dashed underline-offset-4"
+            href={showcase.website}
+            target="_blank"
+            rel="noreferrer"
+          >
+            Visit project
+            <IconArrowRight class="size-4" />
+          </a>
+          <a
+            class="hover:text-accent inline-flex items-center gap-1.5 underline decoration-dashed underline-offset-4"
+            href={showcase.repository}
+            target="_blank"
+            rel="noreferrer"
+          >
+            <IconGitHub class="size-4" />
+            Source
+          </a>
+        </div>
+      </div>
+    </article>
+
+    <div class="mt-10 grid gap-8 md:grid-cols-3">
+      {
+        projects.map(project => (
+          <article class="flex min-w-0 flex-col">
+            <a
+              class="group border-border bg-muted/30 block overflow-hidden rounded-lg border"
+              href={project.website}
+              target="_blank"
+              rel="noreferrer"
+              aria-label={`Visit ${project.name}`}
+            >
+              <img
+                class="aspect-[4/3] w-full object-cover transition-transform duration-500 motion-safe:group-hover:scale-[1.03]"
+                src={getAssetPath(project.image)}
+                width="1200"
+                height="900"
+                alt={project.imageAlt}
+                loading="lazy"
+              />
+            </a>
+            <p class="text-accent mt-5 text-xs font-semibold tracking-widest uppercase">
+              {project.platform}
+            </p>
+            <h3 class="mt-2 text-xl font-semibold break-words">
+              {project.name}
+            </h3>
+            <p class="mt-3 text-sm leading-6">{project.description}</p>
+            <p class="text-muted-foreground mt-2 text-sm leading-6">
+              {project.descriptionZh}
+            </p>
+            <div class="mt-auto flex flex-wrap gap-x-4 gap-y-2 pt-5 text-sm font-semibold">
+              <a
+                class="hover:text-accent inline-flex items-center gap-1 underline decoration-dashed underline-offset-4"
+                href={project.website}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Project
+                <IconArrowRight class="size-4" />
+              </a>
+              <a
+                class="hover:text-accent inline-flex items-center gap-1 underline decoration-dashed underline-offset-4"
+                href={project.repository}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <IconGitHub class="size-4" />
+                Source
+              </a>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section
+    aria-labelledby="support-the-work"
+    class="mt-16 grid gap-8 border-t pt-10 sm:grid-cols-[1fr_auto] sm:items-center"
+  >
+    <div>
+      <p class="text-muted-foreground text-sm font-medium">Support the work</p>
+      <h2 id="support-the-work" class="mt-1 text-2xl font-semibold">
+        请我喝杯咖啡
+      </h2>
+      <p class="mt-4 max-w-xl leading-7">
+        If these projects make something easier or more enjoyable, you can help
+        fund the next release on Ko-fi.
+      </p>
+      <p class="text-muted-foreground mt-2 max-w-xl leading-7">
+        如果这些项目给你带来了帮助或乐趣，可以通过 Ko-fi
+        或微信赞赏支持后续开发。
+      </p>
+      <a
+        class="bg-foreground text-background hover:bg-accent hover:text-accent-foreground mt-6 inline-flex items-center gap-2 rounded-md px-4 py-2.5 text-sm font-semibold transition-colors"
+        href="https://ko-fi.com/joechen"
+        target="_blank"
+        rel="noreferrer"
+      >
+        Buy me a coffee
+        <IconArrowRight class="size-4" />
+      </a>
+    </div>
+
+    <figure class="m-0 w-fit">
+      <img
+        class="border-border size-44 rounded-lg border bg-white object-contain p-2 sm:size-48"
+        src={getAssetPath("img/projects/wechat-donate.png")}
+        width="895"
+        height="895"
+        alt="WeChat appreciation QR code"
+        loading="lazy"
+      />
+      <figcaption class="text-muted-foreground mt-2 text-center text-xs">
+        WeChat · 微信赞赏
+      </figcaption>
+    </figure>
+  </section>
+</div>
