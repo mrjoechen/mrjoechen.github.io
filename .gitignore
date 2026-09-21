@@ -34,3 +34,5 @@ compose.override.yaml
 
 # Optional local font regeneration environment
 .font-venv/
+
+/build

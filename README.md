@@ -22,11 +22,11 @@ Open http://127.0.0.1:4321. Build once (and again after editing articles) to ref
 - About: `src/content/pages/about.md`
 - Static assets: `public/`
 
-The old Jekyll article URLs redirect to `/posts/showcase/`. The article retains its original front-matter date (April 1, 2023). App ads and Google verification files remain available at their original paths. The default domain is `https://blog.joechen.space`; no custom-domain CNAME is needed.
+The old Jekyll article URLs redirect to `/posts/showcase/`. The article retains its original front-matter date (April 1, 2023). App ads and Google verification files remain available at their original paths. The default domain is `https://mrjoechen.github.io`; no custom-domain CNAME is needed.
 
 ## Publish
 
-`.github/workflows/deploy.yml` installs locked dependencies with Node 24, checks lint/formatting, builds the search index and deploys `dist` after a push to `master`. It can also be run manually. In repository Settings → Pages, select GitHub Actions and set the custom domain to `blog.joechen.space`, with HTTPS enabled. This workflow does not change DNS. No commit or push is performed by the local setup.
+`.github/workflows/deploy.yml` installs locked dependencies with Node 24, checks lint/formatting, builds the search index and deploys `dist` after a push to `master`. It can also be run manually. In repository Settings → Pages, select GitHub Actions and set the custom domain to `mrjoechen.github.io`, with HTTPS enabled. This workflow does not change DNS. No commit or push is performed by the local setup.
 
 ## Comments
 
